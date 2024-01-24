@@ -17,7 +17,7 @@ namespace GuessTheNumber
             Random rand = new Random();
 
             number = rand.Next(0, 101);
-            minValue = rand.Next(number - 10, number);
+            minValue = rand.Next(1, number - 10);
             maxValue = rand.Next(number + 1, number + 10);
 
             Console.WriteLine($"Try to determine the number. It surpasses {minValue} but lower than {maxValue}");
@@ -25,7 +25,7 @@ namespace GuessTheNumber
 
             while (triesCount-- > 0)
             {
-                Console.WriteLine("Type your answer: ");
+                Console.Write("Type your answer: ");
                 userInput = Convert.ToInt32(Console.ReadLine());
 
                 if(userInput == number)
@@ -35,8 +35,9 @@ namespace GuessTheNumber
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, this number is incorrect. Try more");
+                    Console.WriteLine($"Sorry, this number is incorrect. Try more, you still have the {triesCount} attempts");
                 }
+                Console.WriteLine($"You lose. Don't worry, better luck next time! The correct number is {number}");
             }
         }
     }
